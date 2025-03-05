@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Simple calculator App</title>
+</head>
+
+<body>
+  <p>Simple calculator</p>
+  
+  <div class="calculator">
+    <input type="text" class="input" autofocus>
+    
+    <div class="buttons">
+      <button class="btn">MC</button>
+      <button class="btn">0</button>
+      <button class="btn">1</button>
+      <button class="btn">2</button>
+      <button class="btn">+</button>
+      <button class="btn">MS</button>
+      <button class="btn">3</button>
+      <button class="btn">4</button>
+      <button class="btn">5</button>
+      <button class="btn">-</button>
+      <button class="btn">MR</button>
+      <button class="btn">6</button>
+      <button class="btn">7</button>
+      <button class="btn">8</button>
+      <button class="btn">*</button>
+      <button class="btn">M+</button>
+      <button class="btn">9</button>
+      <button class="btn">±</button>
+      <button class="btn">=</button>
+      <button class="btn">/</button>
+      <button class="btn">1/x</button>
+      <button class="btn">.</button>
+      <button class="btn">x2</button>
+      <button class="btn">√</button>
+      <button class="btn">C</button>
+    </div>
+  </div>
+  
+  <script>
+
+    let memory = 0;
+
+    const inputField = document.querySelector('.input');
+    const buttons = document.querySelectorAll('.btn');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const btnValue = button.innerText;
+
+        if (btnValue === 'C') {
+
+          inputField.value = '';
+          memory = 0;
+        } else if (btnValue === '=') {
+
+          try {
+            const expression = inputField.value;
+            const result = eval(expression);
+            inputField.value = result;
+          } catch (error) {
+            inputField.value = 'Error';
+          }
+        } else if (btnValue === 'MC') {
+          memory = 0;
+        } else if (btnValue === 'MS') {
+
+          const value = inputField.value.trim();
+          if (/^-?\d+(\.\d+)?$/.test(value)) {
+            memory = parseFloat(value);
+          }
+        } else if (btnValue === 'MR') {
+
+          inputField.value = memory;
+        } else if (btnValue === 'M+') {
+
+          const value = inputField.value.trim();
+          if (/^-?\d+(\.\d+)?$/.test(value)) {
+            memory += parseFloat(value);
+          }
+        } else if (btnValue === '1/x') {
+
+          const num = parseFloat(inputField.value);
+          if (!isNaN(num) && num !== 0) {
+            inputField.value = (1 / num).toFixed(2);
+          } else {
+            inputField.value = 'Error';
+          }
+        } else if (btnValue === 'x2') {
+
+          const num = parseFloat(inputField.value);
+          if (!isNaN(num)) {
+            inputField.value = num * num;
+          }
+        } else if (btnValue === '√') {
+
+          const num = parseFloat(inputField.value);
+          if (!isNaN(num) && num >= 0) {
+            inputField.value = Math.sqrt(num);
+          } else {
+            inputField.value = 'Error';
+          }
+        } else if (btnValue === '±') {
+
+          const value = inputField.value;
+          if (value.charAt(0) === '-') {
+            inputField.value = value.slice(1);
+          } else {
+            inputField.value = '-' + value;
+          }
+        } else if (btnValue === '.') {
+          if (inputField.value === '') {
+            inputField.value += '0.';
+          }
+          else {
+            inputField.value += '.';
+          }
+        }
+        else {
+          inputField.value += btnValue;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
