@@ -53,6 +53,21 @@ body {
     transform: scale(1.1);
 }
 
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotateAnimation 0.5s ease-in-out;
+}
+
+
 p {
     font-size: 30px;
     font-weight: 700;
@@ -63,6 +78,68 @@ p {
 
 }
 
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotateAnimation 0.5s ease-in-out;
+}
+
 p:hover {
     transform: scale(1.1);
+}
+
+.M-btn {
+    background-color: #05a7c3;
+}
+
+.M-btn:hover {
+    background-color: #0d8fa3;
+}
+
+.basic-btn {
+    background-color: #d10e0e;
+}
+
+.basic-btn:hover {
+    background-color: #990b0b;
+}
+
+.clear {
+    background-color: #7b13d1;
+}
+
+.clear:hover {
+    background-color: #6618a6;
+}
+
+.equal {
+    background-color: #09c30c;
+}
+
+.equal:hover {
+    background-color: #0b7a0b;
+}
+
+.num {
+    background-color: #e417c5b7;
+}
+
+.num:hover {
+    background-color: #a72f8f;
+}
+
+.func {
+    background-color: #d7b90cc9;
+}
+
+.func:hover {
+    background-color: #a78f2f;
 }
